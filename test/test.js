@@ -5,9 +5,9 @@ const Conversant = require('../index');
 const formats = Conversant.formats();
 
 
-for (const {name, type} of formats) {
+for (const {name, type, example} of formats) {
   const resultkey = `Conversant_${name}`;
-  const fixture = fs.readFileSync(`test/fixtures/${name}.txt`, { encoding: 'UTF-8'});
+  const fixture = fs.readFileSync(`test/fixtures/${example}`, { encoding: 'UTF-8'});
   test.beforeEach(`consume ${type} without error`, async t => {
     t.context[resultkey] = new Conversant(fixture, type);
   });
